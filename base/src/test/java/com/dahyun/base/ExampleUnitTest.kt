@@ -1,4 +1,4 @@
-package com.dahyun.familylovenotification
+package com.dahyun.base
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
