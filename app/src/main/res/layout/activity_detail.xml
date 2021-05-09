@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.example.familylovenotification.ui.detail.DetailActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.example.familylovenotification.ui.detail.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.detail.DetailActivity">
+
+        <include
+            android:id="@id/title"
+            layout="@layout/view_custom_title"
+            tools:layout_editor_absoluteY="20dp" />
+
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginBottom="48dp"
+            android:onClick="@{_->activity.save()}"
+            android:text="@string/save"
+            android:textSize="44sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="88dp"
+            android:layout_marginBottom="48dp"
+            android:onClick="@{_->activity.delete()}"
+            android:text="@string/delete"
+            android:textSize="44sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/et_phoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:text="@={viewModel.familyMember.phoneNumber}"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_name"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="136dp"
+            android:layout_height="81dp"
+            android:layout_marginTop="40dp"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:text="@={viewModel.familyMember.name}"
+            android:textSize="44sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/tv_sendCountLimitByDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:text='@{"일일 메세지 한계 "+ Integer.toString(viewModel.familyMember.sendCountLimitByDay) + "회"}'
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_phoneNumber" />
+
+        <TextView
+            android:id="@+id/tv_sendHourInterval"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:text='@{"시간 간격 " + Integer.toString(viewModel.familyMember.sendHourInterval) + "시간"}'
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sendCountLimitByDay" />
+
+        <TextView
+            android:id="@+id/tv_sendMessageOnOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:text="@{viewModel.familyMember.isSendingMessage? @string/sendingOn : @string/sendingOff}"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sendHourInterval" />
+
+        <ImageView
+            android:id="@+id/iv_sendCountEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_sendCountLimitByDay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_sendCountLimitByDay"
+            app:srcCompat="@drawable/ic_edit"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/iv_timeIntervalEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_sendHourInterval"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_sendHourInterval"
+            app:srcCompat="@drawable/ic_edit"
+            tools:ignore="ContentDescription" />
+
+        <Switch
+            android:id="@+id/sw_sendMessageOnOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:checked="@={viewModel.familyMember.sendingMessage}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_sendMessageOnOff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_sendMessageOnOff"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
