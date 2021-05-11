@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FamilyLoveNotification</string>
+    <!-- 설정 -->
+    <string name="setting">설정</string>
+    <!-- 연락처 -->
+    <string name="contact">연락처</string>
 </resources>

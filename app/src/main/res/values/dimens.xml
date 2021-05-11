@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_indicator">2dp</dimen>
+    <dimen name="padding_indicator">5dp</dimen>
+    <dimen name="size_navigation_icon">30dp</dimen>
+</resources>
