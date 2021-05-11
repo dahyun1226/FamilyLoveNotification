@@ -2,6 +2,10 @@
     <string name="app_name">FamilyLoveNotification</string>
     <!-- 설정 -->
     <string name="setting">설정</string>
+    <string name="lock_screen_on_off">잠금화면 설정</string>
+    <string name="change_lock_image">잠금화면 이미지 변경</string>
+    <string name="change_clock_image">시계 디자인 변경</string>
     <!-- 연락처 -->
     <string name="contact">연락처</string>
+    <string name="contact_list">연락처 목록</string>
 </resources>
