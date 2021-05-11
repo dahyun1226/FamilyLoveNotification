@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FamilyLoveNotification</string>
+    <string name="app_name">가족사랑알리미</string>
     <!-- 설정 -->
     <string name="setting">설정</string>
     <string name="lock_screen_on_off">잠금화면 설정</string>

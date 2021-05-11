@@ -5,9 +5,9 @@
     <application
         android:name=".FamilyLoveNotificationApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/family_love_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/family_love_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FamilyLoveNotification">
         <activity android:name=".ui.main.MainActivity">
