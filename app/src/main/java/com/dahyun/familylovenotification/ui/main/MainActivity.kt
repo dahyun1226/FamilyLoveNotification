@@ -8,7 +8,9 @@ import com.dahyun.familylovenotification.R
 import com.dahyun.familylovenotification.databinding.ActivityMainBinding
 import com.dahyun.familylovenotification.ui.contact.ContactFragment
 import com.dahyun.familylovenotification.ui.setting.SettingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override var logTag: String = "MainActivity"
