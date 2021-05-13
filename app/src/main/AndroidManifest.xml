@@ -14,8 +14,12 @@
         android:roundIcon="@mipmap/family_love_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FamilyLoveNotification">
-        <activity android:name=".ui.lock.LockActivity" />
-        <activity android:name=".ui.main.MainActivity">
+        <activity
+            android:name=".ui.lock.LockActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

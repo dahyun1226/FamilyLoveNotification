@@ -21,14 +21,14 @@ class LockScreenService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        val filter = IntentFilter(Intent.ACTION_SCREEN_ON)
+        val filter = IntentFilter(Intent.ACTION_SCREEN_OFF)
         registerReceiver(screenOffReceiver, filter)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
         intent?.let {
-            val filter = IntentFilter(Intent.ACTION_SCREEN_ON)
+            val filter = IntentFilter(Intent.ACTION_SCREEN_OFF)
             registerReceiver(screenOffReceiver, filter)
         }
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {

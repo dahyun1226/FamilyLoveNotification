@@ -13,7 +13,7 @@ import javax.inject.Inject
 class ScreenOffReceiver @Inject constructor() : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         when (intent?.action) {
-            Intent.ACTION_SCREEN_ON -> {
+            Intent.ACTION_SCREEN_OFF -> {
                 Intent(context, LockActivity::class.java).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

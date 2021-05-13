@@ -4,10 +4,8 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import android.widget.Switch
 import com.dahyun.base.BaseFragment
 import com.dahyun.familylovenotification.R
-import com.dahyun.familylovenotification.databinding.FragmentContactBinding
 import com.dahyun.familylovenotification.databinding.FragmentSettingBinding
 import com.dahyun.familylovenotification.service.LockScreenService
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,9 +41,15 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
         fun getInstance() = SettingFragment()
     }
 
+    @Suppress("deprecation")
     private fun isLaunchingService(): Boolean {
-//        val manager = context?.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-//        manager.g
+        val manager = context?.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        manager.getRunningServices(Int.MAX_VALUE).forEach {
+            Log.d(logTag,it.service.className)
+            if (it.service.className == "com.dahyun.familylovenotification.service.LockScreenService") {
+                return true
+            }
+        }
         return false
     }
 }
