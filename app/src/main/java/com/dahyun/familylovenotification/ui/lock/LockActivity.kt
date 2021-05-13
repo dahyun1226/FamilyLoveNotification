@@ -29,7 +29,7 @@ class LockActivity : BaseActivity<ActivityLockBinding>(R.layout.activity_lock) {
                     } else {
                         // TODO : WorkManager에 메세지 보내기 예약
                     }
-                    finish()
+                    finishAndRemoveTask()
                 }
             }
             else -> super.onTouchEvent(event)

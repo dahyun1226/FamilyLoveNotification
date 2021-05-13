@@ -16,7 +16,8 @@
         android:theme="@style/Theme.FamilyLoveNotification">
         <activity
             android:name=".ui.lock.LockActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.dahyun.familylovenotification.lock" />
         <activity
             android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait">
