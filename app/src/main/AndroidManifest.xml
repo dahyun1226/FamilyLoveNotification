@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/family_love_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FamilyLoveNotification">
-        <activity android:name=".ui.detail.DetailActivity" />
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.lock.LockActivity"
             android:screenOrientation="portrait"

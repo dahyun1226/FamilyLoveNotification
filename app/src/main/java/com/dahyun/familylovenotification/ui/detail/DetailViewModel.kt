@@ -1,5 +1,6 @@
 package com.dahyun.familylovenotification.ui.detail
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.dahyun.base.BaseViewModel
@@ -18,4 +19,22 @@ class DetailViewModel @Inject constructor() : BaseViewModel() {
     fun setFamilyMember(familyMember: FamilyMember) {
         _familyMember.value = familyMember
     }
+
+    fun onSending() {
+        _familyMember.value = _familyMember.value?.copy(isSendingMessage = true)
+    }
+
+    fun offSending() {
+        _familyMember.value = _familyMember.value?.copy(isSendingMessage = false)
+    }
+
+    fun setName(name: String) {
+        _familyMember.value = _familyMember.value?.copy(name = name)
+    }
+
+    fun setPhoneNumber(phoneNumber: String) {
+        _familyMember.value = _familyMember.value?.copy(phoneNumber = phoneNumber)
+        Log.d(logTag,_familyMember.toString())
+    }
+
 }

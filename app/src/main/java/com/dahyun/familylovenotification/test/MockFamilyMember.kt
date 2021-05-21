@@ -14,7 +14,7 @@ object MockFamilyMember {
                 0,
                 3,
                 LocalDateTime.of(2021,3,31,3,3),
-                false
+                true
             )
         )
     }
