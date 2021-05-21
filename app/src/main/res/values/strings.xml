@@ -13,4 +13,6 @@
     <string name="delete">삭제</string>
     <string name="sending_on">보내기 활성</string>
     <string name="sending_off">보내기 비활성</string>
+    <string name="phone_number">전화번호</string>
+    <string name="name">이름</string>
 </resources>
