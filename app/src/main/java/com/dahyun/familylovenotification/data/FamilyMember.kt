@@ -1,5 +1,7 @@
 package com.dahyun.familylovenotification.data
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -24,4 +26,40 @@ data class FamilyMember(
     val lastSendTime: LocalDateTime?,
     @ColumnInfo(name = "is_sending_message")
     val isSendingMessage: Boolean = false
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readSerializable() as LocalDateTime,
+        parcel.readByte() != 0.toByte()
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+        parcel.writeString(name)
+        parcel.writeString(phoneNumber)
+        parcel.writeInt(sendCountToday)
+        parcel.writeInt(sendCountLimitByDay)
+        parcel.writeInt(sendHourInterval)
+        parcel.writeSerializable(lastSendTime)
+        parcel.writeByte(if (isSendingMessage) 1 else 0)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<FamilyMember> {
+        override fun createFromParcel(parcel: Parcel): FamilyMember {
+            return FamilyMember(parcel)
+        }
+
+        override fun newArray(size: Int): Array<FamilyMember?> {
+            return arrayOfNulls(size)
+        }
+    }
+}

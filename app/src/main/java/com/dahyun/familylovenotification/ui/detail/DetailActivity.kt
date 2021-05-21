@@ -1,0 +1,40 @@
+package com.dahyun.familylovenotification.ui.detail
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.activity.viewModels
+import com.dahyun.base.BaseActivity
+import com.dahyun.familylovenotification.R
+import com.dahyun.familylovenotification.data.FamilyMember
+import com.dahyun.familylovenotification.databinding.ActivityDetailBinding
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_detail) {
+
+    override var logTag: String = "DetailActivity"
+
+    private val detailViewModel by viewModels<DetailViewModel>()
+
+    override fun initLayout() {
+        super.initLayout()
+        intent.getParcelableExtra<FamilyMember>(FAMILY_MEMBER)?.let {
+            detailViewModel.setFamilyMember(it)
+        }
+        initBinding()
+    }
+
+    private fun initBinding() {
+        with(binding) {
+            this.viewModel = detailViewModel
+            this.tvSave.setOnClickListener {
+                finish()
+            }
+        }
+    }
+
+    companion object {
+        const val FAMILY_MEMBER = "family_member"
+    }
+}
