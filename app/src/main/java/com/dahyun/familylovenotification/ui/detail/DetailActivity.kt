@@ -22,6 +22,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
 
     override fun initLayout() {
         super.initLayout()
+        detailViewModel.setFamilyMember(FamilyMember(id = 0))
         intent.getParcelableExtra<FamilyMember>(FAMILY_MEMBER)?.let {
             detailViewModel.setFamilyMember(it)
         }
@@ -32,6 +33,11 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
         with(binding) {
             this.viewModel = detailViewModel
             this.tvSave.setOnClickListener {
+                detailViewModel.saveFamilyMember()
+                finish()
+            }
+            this.tvDelete.setOnClickListener {
+                detailViewModel.deleteFamilyMember()
                 finish()
             }
             this.swSendMessageOnOff.setOnCheckedChangeListener { _, isChecked ->
@@ -45,12 +51,12 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
                 }
             }
             this.etPhoneNumber.apply {
-                doOnTextChanged { _ , _, _, _ ->
+                doOnTextChanged { _, _, _, _ ->
                     detailViewModel.setPhoneNumber(this.text.toString())
                 }
             }
             this.etName.apply {
-                doOnTextChanged { _ , _, _, _ ->
+                doOnTextChanged { _, _, _, _ ->
                     detailViewModel.setName(this.text.toString())
                 }
             }

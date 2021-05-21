@@ -9,7 +9,7 @@ import com.dahyun.familylovenotification.data.FamilyMember
 @Dao
 interface FamilyMemberDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertFamilyMember(familyMemberEntity: FamilyMember)
+    fun insertFamilyMember(familyMember: FamilyMember)
 
     @Query("DELETE FROM familymember WHERE id = :id")
     fun deleteFamilyMemberById(id: Int)

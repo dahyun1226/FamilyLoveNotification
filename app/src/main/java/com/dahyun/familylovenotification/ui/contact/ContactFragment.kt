@@ -36,6 +36,11 @@ class ContactFragment : BaseFragment<FragmentContactBinding>(R.layout.fragment_c
         with(binding) {
             this.viewmodel = contactViewModel
             this.rvContactList.adapter = contactListAdapter
+            this.ivAddFamilyMember.setOnClickListener {
+                Intent(context, DetailActivity::class.java).run {
+                    startActivity(this)
+                }
+            }
         }
     }
 

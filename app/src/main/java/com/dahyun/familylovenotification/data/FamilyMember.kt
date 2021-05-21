@@ -13,9 +13,9 @@ data class FamilyMember(
     @ColumnInfo(name = "id")
     val id: Int,
     @ColumnInfo(name = "name")
-    val name: String?,
+    val name: String? = "이름",
     @ColumnInfo(name = "phone_number")
-    val phoneNumber: String?,
+    val phoneNumber: String? ="00012345678",
     @ColumnInfo(name = "send_count_today")
     val sendCountToday: Int = 0,
     @ColumnInfo(name = "send_count_limit_by_day")
@@ -23,7 +23,7 @@ data class FamilyMember(
     @ColumnInfo(name = "send_hour_interval")
     val sendHourInterval: Int = 5,
     @ColumnInfo(name = "last_send_time")
-    val lastSendTime: LocalDateTime?,
+    val lastSendTime: LocalDateTime? = LocalDateTime.now(),
     @ColumnInfo(name = "is_sending_message")
     val isSendingMessage: Boolean = false
 ) : Parcelable {
