@@ -1,7 +1,6 @@
 package com.dahyun.familylovenotification.ui.main
 
 import android.view.MenuItem
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.commit
 import com.dahyun.base.BaseActivity
 import com.dahyun.familylovenotification.R

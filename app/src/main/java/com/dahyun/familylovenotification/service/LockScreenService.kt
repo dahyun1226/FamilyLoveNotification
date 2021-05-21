@@ -31,21 +31,19 @@ class LockScreenService : Service() {
             val filter = IntentFilter(Intent.ACTION_SCREEN_OFF)
             registerReceiver(screenOffReceiver, filter)
         }
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            val chan = NotificationChannel(
-                ANDROID_CHANNEL_ID,
-                CHANNEL_NAME,
-                NotificationManager.IMPORTANCE_NONE
-            )
-            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            manager.createNotificationChannel(chan)
+        val chan = NotificationChannel(
+            ANDROID_CHANNEL_ID,
+            CHANNEL_NAME,
+            NotificationManager.IMPORTANCE_NONE
+        )
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.createNotificationChannel(chan)
 
-            val builder = Notification.Builder(this, ANDROID_CHANNEL_ID)
-                .setContentTitle(getString(R.string.app_name))
-            val notification = builder.build()
+        val builder = Notification.Builder(this, ANDROID_CHANNEL_ID)
+            .setContentTitle(getString(R.string.app_name))
+        val notification = builder.build()
 
-            startForeground(NOTIFICATION_ID, notification)
-        }
+        startForeground(NOTIFICATION_ID, notification)
 
         return START_REDELIVER_INTENT
     }
