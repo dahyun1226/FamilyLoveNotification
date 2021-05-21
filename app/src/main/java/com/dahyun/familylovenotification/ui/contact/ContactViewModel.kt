@@ -2,9 +2,12 @@ package com.dahyun.familylovenotification.ui.contact
 
 import com.dahyun.base.BaseViewModel
 import com.dahyun.familylovenotification.data.FamilyMember
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDateTime
+import javax.inject.Inject
 
-class ContactViewModel : BaseViewModel() {
+@HiltViewModel
+class ContactViewModel @Inject constructor(): BaseViewModel() {
     override var logTag: String = "ContactViewModel"
 
     var familyMembers = mockFamilyMember()

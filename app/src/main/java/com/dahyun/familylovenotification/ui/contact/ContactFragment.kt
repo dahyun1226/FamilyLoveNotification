@@ -1,6 +1,6 @@
 package com.dahyun.familylovenotification.ui.contact
 
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.dahyun.base.BaseFragment
 import com.dahyun.familylovenotification.R
 import com.dahyun.familylovenotification.databinding.FragmentContactBinding
@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ContactFragment : BaseFragment<FragmentContactBinding>(R.layout.fragment_contact) {
 
     override var logTag: String = "ContactFragment"
-    private val contactViewModel by activityViewModels<ContactViewModel>()
+    private val contactViewModel by viewModels<ContactViewModel>()
     private val contactListAdapter by lazy { ContactListAdapter() }
 
     companion object {
