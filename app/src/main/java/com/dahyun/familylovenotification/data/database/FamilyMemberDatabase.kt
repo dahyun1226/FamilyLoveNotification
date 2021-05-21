@@ -17,7 +17,6 @@ import com.dahyun.familylovenotification.data.database.FamilyMemberDatabase.Comp
     version = VERSION,
     exportSchema = false
 )
-
 @TypeConverters(TimeConverter::class)
 abstract class FamilyMemberDatabase : RoomDatabase() {
 

@@ -27,6 +27,11 @@ class ContactFragment : BaseFragment<FragmentContactBinding>(R.layout.fragment_c
         super.initLayout()
     }
 
+    override fun onResume() {
+        super.onResume()
+        contactViewModel.getAllFamilyMembers()
+    }
+
     private fun initRecyclerView() {
         with(binding) {
             this.viewmodel = contactViewModel
@@ -36,7 +41,9 @@ class ContactFragment : BaseFragment<FragmentContactBinding>(R.layout.fragment_c
 
     override fun onContactClick(position: Int) {
         Intent(context, DetailActivity::class.java).run {
-            putExtra(FAMILY_MEMBER, contactViewModel.familyMembers[position])
+            contactViewModel.familyMembers.value?.let {
+                putExtra(FAMILY_MEMBER, it[position])
+            }
             startActivity(this)
         }
     }
