@@ -17,7 +17,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LockScreenService : Service() {
 
-    private val screenOffReceiver: ScreenOffReceiver = ScreenOffReceiver()
+    private val screenOffReceiver: ScreenOffReceiver = ScreenOffReceiver(this)
 
     override fun onCreate() {
         super.onCreate()

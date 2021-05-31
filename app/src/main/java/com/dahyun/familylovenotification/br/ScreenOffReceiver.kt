@@ -1,14 +1,17 @@
 package com.dahyun.familylovenotification.br
 
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.dahyun.familylovenotification.service.LockScreenService
 import com.dahyun.familylovenotification.ui.lock.LockActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ScreenOffReceiver @Inject constructor() : BroadcastReceiver() {
+class ScreenOffReceiver @Inject constructor(private val lockScreenService: LockScreenService) :
+    BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         when (intent?.action) {
             Intent.ACTION_SCREEN_OFF -> {
@@ -16,7 +19,7 @@ class ScreenOffReceiver @Inject constructor() : BroadcastReceiver() {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                 }.run {
-                    context?.startActivity(this)
+                    PendingIntent.getActivity(lockScreenService,200,this,PendingIntent.FLAG_CANCEL_CURRENT).send()
                 }
             }
         }

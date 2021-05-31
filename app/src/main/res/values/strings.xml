@@ -15,4 +15,5 @@
     <string name="sending_off">보내기 비활성</string>
     <string name="phone_number">전화번호</string>
     <string name="name">이름</string>
+    <string name="send_message">메세지 보냄</string>
 </resources>
