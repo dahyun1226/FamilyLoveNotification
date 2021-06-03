@@ -14,8 +14,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override var logTag: String = "MainActivity"
 
-    private val contactFragment by lazy { ContactFragment.getInstance() }
-    private val settingFragment by lazy { SettingFragment.getInstance() }
+    private val contactFragment by lazy { ContactFragment.getFragment() }
+    private val settingFragment by lazy { SettingFragment.getFragment() }
 
     override fun initLayout() {
         navigateFragment(MainType.SETTING)

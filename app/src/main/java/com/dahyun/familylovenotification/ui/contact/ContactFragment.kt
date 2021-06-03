@@ -19,7 +19,7 @@ class ContactFragment : BaseFragment<FragmentContactBinding>(R.layout.fragment_c
     private val contactListAdapter by lazy { ContactListAdapter(this) }
 
     companion object {
-        fun getInstance() = ContactFragment()
+        fun getFragment() = ContactFragment()
     }
 
     override fun initLayout() {

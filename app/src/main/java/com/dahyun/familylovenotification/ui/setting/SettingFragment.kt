@@ -38,7 +38,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
     }
 
     companion object {
-        fun getInstance() = SettingFragment()
+        fun getFragment() = SettingFragment()
     }
 
     @Suppress("deprecation")
