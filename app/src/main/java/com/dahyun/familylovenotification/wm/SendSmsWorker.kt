@@ -3,6 +3,7 @@ package com.dahyun.familylovenotification.wm
 import android.content.Context
 import android.content.res.Resources
 import android.telephony.SmsManager
+import android.util.Log
 import androidx.hilt.work.HiltWorker
 import androidx.work.Worker
 import androidx.work.WorkerParameters

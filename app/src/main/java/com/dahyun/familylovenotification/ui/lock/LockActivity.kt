@@ -23,26 +23,9 @@ class LockActivity : BaseActivity<ActivityLockBinding>(R.layout.activity_lock) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(logTag,"oncreate")
     }
 
     private val click by lazy { ClickUtil(this.lifecycle) }
-
-    val requestPermissionLauncher =
-        registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
-            if (isGranted) {
-                // Permission is granted. Continue the action or workflow in your
-                // app.
-            } else {
-                // Explain to the user that the feature is unavailable because the
-                // features requires a permission that the user has denied. At the
-                // same time, respect the user's decision. Don't link to system
-                // settings in an effort to convince the user to change their
-                // decision.
-            }
-        }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
@@ -51,10 +34,8 @@ class LockActivity : BaseActivity<ActivityLockBinding>(R.layout.activity_lock) {
                     if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
                         != PackageManager.PERMISSION_GRANTED
                     ) {
-                        Log.d("dowork", "아직여기야")
                         requestPermissions(Array(1) { Manifest.permission.SEND_SMS }, 300)
                     } else {
-                        Log.d("dowork", "lock성공")
                         val sendSmsWorkRequest: WorkRequest =
                             OneTimeWorkRequestBuilder<SendSmsWorker>()
                                 .build()

@@ -1,10 +1,13 @@
 package com.dahyun.familylovenotification.br
 
+import android.Manifest
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
@@ -21,12 +24,19 @@ class SendSmsReceiver @Inject constructor(private val screenOnCheckService: Scre
     override fun onReceive(context: Context?, intent: Intent?) {
         when (intent?.action) {
             Intent.ACTION_SCREEN_ON -> {
-                val sendSmsWorkRequest: WorkRequest =
-                    OneTimeWorkRequestBuilder<SendSmsWorker>()
-                        .build()
-                WorkManager
-                    .getInstance(screenOnCheckService)
-                    .enqueue(sendSmsWorkRequest)
+                if (ContextCompat.checkSelfPermission(
+                        screenOnCheckService,
+                        Manifest.permission.SEND_SMS
+                    )
+                    == PackageManager.PERMISSION_GRANTED
+                ) {
+                    val sendSmsWorkRequest: WorkRequest =
+                        OneTimeWorkRequestBuilder<SendSmsWorker>()
+                            .build()
+                    WorkManager
+                        .getInstance(screenOnCheckService)
+                        .enqueue(sendSmsWorkRequest)
+                }
             }
         }
     }
