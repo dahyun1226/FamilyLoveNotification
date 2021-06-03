@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
+import javax.inject.Inject
 
 @HiltWorker
 class SendSmsWorker @AssistedInject constructor(
@@ -66,7 +67,7 @@ class SendSmsWorker @AssistedInject constructor(
             .sendTextMessage(
                 familyMember.phoneNumber,
                 null,
-                Resources.getSystem().getString(R.string.send_message),
+                applicationContext.getString(R.string.send_message),
                 null,
                 null
             )

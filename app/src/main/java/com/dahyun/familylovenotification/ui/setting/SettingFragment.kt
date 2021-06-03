@@ -8,6 +8,7 @@ import com.dahyun.base.BaseFragment
 import com.dahyun.familylovenotification.R
 import com.dahyun.familylovenotification.databinding.FragmentSettingBinding
 import com.dahyun.familylovenotification.service.LockScreenService
+import com.dahyun.familylovenotification.service.ScreenOnCheckService
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,21 +17,40 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
 
     override fun initLayout() {
         super.initLayout()
-        binding.swLockScreenOnOff.apply {
-            isChecked = isLaunchingService()
-            setOnCheckedChangeListener { _, isChecked ->
-                when (isChecked) {
-                    true -> {
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        with(binding) {
+            swLockScreenOnOff.apply {
+                isChecked =
+                    isLaunchingService("com.dahyun.familylovenotification.service.LockScreenService")
+                setOnCheckedChangeListener { _, isChecked ->
+                    when (isChecked) {
+                        true -> {
                             context?.startForegroundService(
                                 Intent(context, LockScreenService::class.java)
                             )
                         }
+                        false -> {
+                            context?.stopService(
+                                Intent(binding.root.context, LockScreenService::class.java)
+                            )
+                        }
                     }
-                    false -> {
-                        context?.stopService(
-                            Intent(binding.root.context, LockScreenService::class.java)
-                        )
+                }
+            }
+            swNotificationOnOff.apply {
+                isChecked =
+                    isLaunchingService("com.dahyun.familylovenotification.service.ScreenOnCheckService")
+                setOnCheckedChangeListener { _, isChecked ->
+                    when (isChecked) {
+                        true -> {
+                            context?.startForegroundService(
+                                Intent(context, ScreenOnCheckService::class.java)
+                            )
+                        }
+                        false -> {
+                            context?.stopService(
+                                Intent(binding.root.context, ScreenOnCheckService::class.java)
+                            )
+                        }
                     }
                 }
             }
@@ -42,11 +62,11 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
     }
 
     @Suppress("deprecation")
-    private fun isLaunchingService(): Boolean {
+    private fun isLaunchingService(serviceName: String): Boolean {
         val manager = context?.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         manager.getRunningServices(Int.MAX_VALUE).forEach {
-            Log.d(logTag,it.service.className)
-            if (it.service.className == "com.dahyun.familylovenotification.service.LockScreenService") {
+            Log.d(logTag, it.service.className)
+            if (it.service.className == serviceName) {
                 return true
             }
         }
