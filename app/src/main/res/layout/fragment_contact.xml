@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="com.dahyun.familylovenotification.ui.contact.ContactViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +19,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="15dp"
             android:text="@string/contact_list"
             android:textSize="44sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,6 +27,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_contactList"
+            replaceList="@{viewmodel.familyMembers}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -40,8 +42,8 @@
             android:id="@+id/iv_addFamilyMember"
             android:layout_width="44dp"
             android:layout_height="44dp"
+            android:layout_marginStart="25dp"
             app:layout_constraintBottom_toBottomOf="@id/tv_contactList"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_contactList"
             app:layout_constraintTop_toTopOf="@id/tv_contactList"
             app:srcCompat="@drawable/ic_person_add"

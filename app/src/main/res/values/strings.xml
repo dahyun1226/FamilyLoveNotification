@@ -5,7 +5,17 @@
     <string name="lock_screen_on_off">잠금화면 설정</string>
     <string name="change_lock_image">잠금화면 이미지 변경</string>
     <string name="change_clock_image">시계 디자인 변경</string>
+    <string name="request_send_sms_permission">SMS 송신 권한 필요</string>
     <!-- 연락처 -->
     <string name="contact">연락처</string>
     <string name="contact_list">연락처 목록</string>
+    <!-- 상세 -->
+    <string name="save">저장</string>
+    <string name="delete">삭제</string>
+    <string name="sending_on">보내기 활성</string>
+    <string name="sending_off">보내기 비활성</string>
+    <string name="phone_number">전화번호</string>
+    <string name="name">이름</string>
+    <string name="send_message">메세지 보냄</string>
+    <string name="notification_on_off">알림 기능 ON / OFF</string>
 </resources>

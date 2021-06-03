@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.dahyun.familylovenotification">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".FamilyLoveNotificationApplication"
@@ -10,13 +15,38 @@
         android:roundIcon="@mipmap/family_love_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FamilyLoveNotification">
-        <activity android:name=".ui.main.MainActivity">
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.lock.LockActivity"
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.dahyun.familylovenotification.lock" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.LockScreenService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".service.ScreenOnCheckService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            tools:node="remove"
+            android:authorities="${applicationId}.workmanager-init"
+            android:exported="false" />
+
     </application>
 
 </manifest>

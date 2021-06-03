@@ -1,20 +1,22 @@
 package com.dahyun.familylovenotification.ui.main
 
 import android.view.MenuItem
-import androidx.core.content.res.ResourcesCompat
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.commit
 import com.dahyun.base.BaseActivity
 import com.dahyun.familylovenotification.R
 import com.dahyun.familylovenotification.databinding.ActivityMainBinding
 import com.dahyun.familylovenotification.ui.contact.ContactFragment
 import com.dahyun.familylovenotification.ui.setting.SettingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override var logTag: String = "MainActivity"
 
-    private val contactFragment by lazy { ContactFragment.getInstance() }
-    private val settingFragment by lazy { SettingFragment.getInstance() }
+    private val contactFragment by lazy { ContactFragment.getFragment() }
+    private val settingFragment by lazy { SettingFragment.getFragment() }
 
     override fun initLayout() {
         navigateFragment(MainType.SETTING)
